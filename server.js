@@ -1,6 +1,6 @@
 require('dotenv').config(); // Must  
 
-const connectToDB = require("mongoose");
+const connectToDB = require("./src/config/db");
 const app = require("./src/app");
 
 connectToDB()
