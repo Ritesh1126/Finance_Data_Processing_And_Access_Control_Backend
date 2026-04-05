@@ -1,10 +1,10 @@
-require('dotenv').config();  
+require('dotenv').config(); // Must  
 
-const mongoose = require("mongoose");
+const connectToDB = require("mongoose");
 const app = require("./src/app");
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
+connectToDB.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("MongoDB Connected");
 
@@ -15,4 +15,7 @@ mongoose.connect(process.env.MONGO_URI)
 })
 .catch((err) => {
     console.log("DB Connection Error:", err);
+    process.exit(1); // IF DB connection fails , then it exits the process
 });
+
+module.export = connectToDB;
