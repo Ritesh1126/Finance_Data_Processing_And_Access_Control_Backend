@@ -1,4 +1,4 @@
-const express = reuqire("express");
+const express = require("express");
 
 
 const app = express();  // we have export this app to use in other file like server.js 
