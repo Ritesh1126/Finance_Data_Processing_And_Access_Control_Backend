@@ -1,6 +1,18 @@
-const app = require("./src/app");  // we have import the app from app.js file to use in this server.js file
-                                  // we have set the port number to 3000 or we can use the port number from environment variable
+require('dotenv').config();  
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
-}   );
+const mongoose = require("mongoose");
+const app = require("./src/app");
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+    console.log("MongoDB Connected");
+
+    // Start server only after DB connects
+    app.listen(3000, () => {
+        console.log("Server is running on port 3000");
+    });
+})
+.catch((err) => {
+    console.log("DB Connection Error:", err);
+});
