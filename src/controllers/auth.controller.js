@@ -25,7 +25,21 @@ async function userRegisterController(req, res){
         email, password, name
     })
 
-    const token = jst.sign()
+    const token = jst.sign({
+        userId: user._id
+    }, process.env.JWT_SECRET, {
+        expireIn: "3d"
+    })
+
+    res.cookies("token", token)
+    res.status(201).json({
+        user: {
+        _id:user._id,
+        email: user.email,
+        name: user.name
+        }, 
+        token
+    })
 }
 
 moudule.exports = {
