@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypths")
 
 const userSchema = new mongoose.Schema ({
     //Email Validation using regex and also making it unique to avoid duplicates
@@ -28,8 +29,19 @@ const userSchema = new mongoose.Schema ({
 
 })
 
-userSchema.pre("save", async function(next) 
+userSchema.pre("save", async function(next)
 {
- 
-    
+    if (!this.isModifies("password"))
+    {
+        return next();
+
+    }
+
+    const hash = await bcrypt.hash(this.password, 10);
+    this.password = hash; // converts the hash into the database
+    return next ()
 })
+
+userSchema.methods.comaparePassword = async function (password){
+    return bcrypt.compare(password, this.password); // it compares the password with hash 
+}
