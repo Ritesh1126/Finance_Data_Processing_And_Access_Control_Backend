@@ -1,4 +1,4 @@
-const epxress = require("express");
+const express = require("express");
 
 const authController = require("../controllers/auth.controller");
 
