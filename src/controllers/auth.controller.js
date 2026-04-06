@@ -42,6 +42,6 @@ async function userRegisterController(req, res){
     })
 }
 
-moudule.exports = {
+module.exports = {
     userRegisterController
 }

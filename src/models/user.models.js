@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypths")
+const bcrypt = require("bcrypt")
 
 const userSchema = new mongoose.Schema ({
     //Email Validation using regex and also making it unique to avoid duplicates
