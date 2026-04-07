@@ -31,7 +31,7 @@ async function userRegisterController(req, res){
         expireIn: "3d"
     })
 
-    res.cookies("token", token)
+    res.cookie("token", token)
     res.status(201).json({
         user: {
         _id:user._id,
