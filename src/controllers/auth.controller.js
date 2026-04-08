@@ -15,7 +15,7 @@ async function userRegisterController(req, res){
 
     if (isExists)
     {
-        return res.status(422).json({
+        return res.status(401).json({
             message : "User Already Exists with this email",
             status: "failed"
         })
