@@ -12,5 +12,4 @@ function connectTODB(){
         process.exit(1);
     })
 }
-
 module.exports = connectTODB;
