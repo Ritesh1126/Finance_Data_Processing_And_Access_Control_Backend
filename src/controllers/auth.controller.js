@@ -25,10 +25,10 @@ async function userRegisterController(req, res){
         email, password, name
     })
 
-    const token = jst.sign({
+    const token = jwt.sign({
         userId: user._id
     }, process.env.JWT_SECRET, {
-        expireIn: "3d"
+        expiresIn: "3d"
     })
 
     res.cookie("token", token)
