@@ -10,8 +10,8 @@ async function userRegisterController(req, res){
     const {email, password, name} = req.body;
 
     const isExists = await userModel.findOne ({
-        email:email
-    })
+        email:email 
+    }).select("password")
 
     if (isExists)
     {
